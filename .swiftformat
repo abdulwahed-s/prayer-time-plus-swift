@@ -1,0 +1,7 @@
+# SwiftFormat configuration — committed and enforced in CI.
+--swiftversion 6.3
+--maxwidth 100
+--indent 4
+--self remove
+--stripunusedargs closure-only
+--exclude .build,Sources/PrayerTimePlus/Data

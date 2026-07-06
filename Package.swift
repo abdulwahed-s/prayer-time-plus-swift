@@ -3,24 +3,45 @@
 
 import PackageDescription
 
+// Treat every warning as an error so the tree stays warning-clean. This uses the
+// supported build setting (not `-warnings-as-errors` unsafe flags) so the package
+// can still be consumed by a semantic-version requirement.
+let strict: [SwiftSetting] = [
+    .treatAllWarnings(as: .error),
+]
+
 let package = Package(
-    name: "prayer-time-plus-swift",
+    name: "PrayerTimePlus",
+    platforms: [
+        .macOS(.v10_15),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6),
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "prayer-time-plus-swift",
-            targets: ["prayer-time-plus-swift"]
+            name: "PrayerTimePlus",
+            targets: ["PrayerTimePlus"]
+        ),
+        .executable(
+            name: "prayer-time-plus-cli",
+            targets: ["prayer-time-plus-cli"]
         ),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "prayer-time-plus-swift"
+            name: "PrayerTimePlus",
+            swiftSettings: strict
+        ),
+        .executableTarget(
+            name: "prayer-time-plus-cli",
+            dependencies: ["PrayerTimePlus"],
+            swiftSettings: strict
         ),
         .testTarget(
-            name: "prayer-time-plus-swiftTests",
-            dependencies: ["prayer-time-plus-swift"]
+            name: "PrayerTimePlusTests",
+            dependencies: ["PrayerTimePlus"],
+            swiftSettings: strict
         ),
     ],
     swiftLanguageModes: [.v6]

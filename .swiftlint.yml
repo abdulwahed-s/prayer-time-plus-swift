@@ -1,0 +1,49 @@
+# SwiftLint configuration — committed and run with --strict in CI.
+included:
+  - Sources
+  - Tests
+excluded:
+  - .build
+  # GENERATED data — reviewed through its generator (Tools/), not hand-linted.
+  - Sources/PrayerTimePlus/Data
+
+opt_in_rules:
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - empty_count
+  - empty_string
+  - first_where
+  - force_unwrapping
+  - implicit_return
+  - last_where
+  - literal_expression_end_indentation
+  - modifier_order
+  - operator_usage_whitespace
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+  - yoda_condition
+
+line_length:
+  warning: 100
+  error: 140
+  ignores_comments: true
+  ignores_urls: true
+
+# Single-letter names (x, t, …) are conventional in the trig/astronomy math and
+# mirror the standard solar formulas; allow them.
+identifier_name:
+  min_length:
+    warning: 1
+    error: 1
+  max_length: 50
+
+type_name:
+  max_length: 50
+
+function_body_length:
+  warning: 90
+  error: 130
