@@ -8,31 +8,45 @@ import Foundation
 
 /// Converts `x` from degrees to radians.
 @inline(__always)
-func degreesToRadians(_ x: Double) -> Double { x * .pi / 180.0 }
+func degreesToRadians(_ x: Double) -> Double {
+    x * .pi / 180.0
+}
 
 /// Converts `x` from radians to degrees.
 @inline(__always)
-func radiansToDegrees(_ x: Double) -> Double { x * 180.0 / .pi }
+func radiansToDegrees(_ x: Double) -> Double {
+    x * 180.0 / .pi
+}
 
 /// Sine of an angle given in degrees.
 @inline(__always)
-func sinDeg(_ x: Double) -> Double { sin(degreesToRadians(x)) }
+func sinDeg(_ x: Double) -> Double {
+    sin(degreesToRadians(x))
+}
 
 /// Cosine of an angle given in degrees.
 @inline(__always)
-func cosDeg(_ x: Double) -> Double { cos(degreesToRadians(x)) }
+func cosDeg(_ x: Double) -> Double {
+    cos(degreesToRadians(x))
+}
 
 /// Tangent of an angle given in degrees.
 @inline(__always)
-func tanDeg(_ x: Double) -> Double { tan(degreesToRadians(x)) }
+func tanDeg(_ x: Double) -> Double {
+    tan(degreesToRadians(x))
+}
 
 /// Arcsine, returning degrees.
 @inline(__always)
-func arcsinDeg(_ x: Double) -> Double { radiansToDegrees(asin(x)) }
+func arcsinDeg(_ x: Double) -> Double {
+    radiansToDegrees(asin(x))
+}
 
 /// Arccosine, returning degrees.
 @inline(__always)
-func arccosDeg(_ x: Double) -> Double { radiansToDegrees(acos(x)) }
+func arccosDeg(_ x: Double) -> Double {
+    radiansToDegrees(acos(x))
+}
 
 /// Arccotangent, returning degrees.
 ///
@@ -40,11 +54,15 @@ func arccosDeg(_ x: Double) -> Double { radiansToDegrees(acos(x)) }
 /// for negative arguments — the two disagree in sign there, which matters for the
 /// Asr altitude when latitude and declination straddle.
 @inline(__always)
-func arccotDeg(_ x: Double) -> Double { radiansToDegrees(atan2(1.0, x)) }
+func arccotDeg(_ x: Double) -> Double {
+    radiansToDegrees(atan2(1.0, x))
+}
 
 /// Two-argument arctangent of `y / x`, returning degrees in `(-180, 180]`.
 @inline(__always)
-func arctan2Deg(_ y: Double, _ x: Double) -> Double { radiansToDegrees(atan2(y, x)) }
+func arctan2Deg(_ y: Double, _ x: Double) -> Double {
+    radiansToDegrees(atan2(y, x))
+}
 
 /// Wraps an angle to the half-open range `[0, 360)` degrees.
 ///

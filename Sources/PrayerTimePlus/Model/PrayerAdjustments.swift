@@ -23,7 +23,7 @@ public struct PrayerAdjustments: Sendable, Equatable {
         dhuhr: Int = 0,
         asr: Int = 0,
         maghrib: Int = 0,
-        isha: Int = 0
+        isha: Int = 0,
     ) {
         self.fajr = fajr
         self.sunrise = sunrise

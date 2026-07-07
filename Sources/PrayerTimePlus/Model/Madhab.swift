@@ -9,5 +9,7 @@ public enum Madhab: Int, Sendable, Equatable, CaseIterable {
     case hanafi = 1
 
     /// The shadow-length multiple used by the Asr calculation (`1` or `2`).
-    public var shadowFactor: Int { rawValue + 1 }
+    public var shadowFactor: Int {
+        rawValue + 1
+    }
 }

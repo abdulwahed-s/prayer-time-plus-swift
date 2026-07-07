@@ -1,5 +1,5 @@
-import XCTest
 @testable import PrayerTimePlus
+import XCTest
 
 /// Tests for the method preset table and Auto resolution.
 final class CalculationMethodTests: XCTestCase {

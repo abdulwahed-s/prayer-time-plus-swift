@@ -44,18 +44,18 @@ struct SolarTime {
     /// Uses the USNO low-precision coefficients. The argument already includes the
     /// day-fraction time-of-day (`baseJulianDay + seed`).
     static func sunPosition(_ julianDay: Double) -> (declination: Double, equationOfTime: Double) {
-        let daysSinceEpoch = julianDay - 2451545.0                                 // D since J2000.0
-        let meanAnomaly = fixAngle(0.98560028 * daysSinceEpoch + 357.529)          // g
-        let meanLongitude = fixAngle(0.98564736 * daysSinceEpoch + 280.459)        // q
-        let eclipticLongitude = fixAngle(                                          // L
-            meanLongitude + 1.915 * sinDeg(meanAnomaly) + 0.020 * sinDeg(2.0 * meanAnomaly)
+        let daysSinceEpoch = julianDay - 2451545.0 // D since J2000.0
+        let meanAnomaly = fixAngle(0.98560028 * daysSinceEpoch + 357.529) // g
+        let meanLongitude = fixAngle(0.98564736 * daysSinceEpoch + 280.459) // q
+        let eclipticLongitude = fixAngle( // L
+            meanLongitude + 1.915 * sinDeg(meanAnomaly) + 0.020 * sinDeg(2.0 * meanAnomaly),
         )
-        let obliquity = 23.439 - 3.6e-7 * daysSinceEpoch                           // ε
+        let obliquity = 23.439 - 3.6e-7 * daysSinceEpoch // ε
 
         let declination = arcsinDeg(sinDeg(obliquity) * sinDeg(eclipticLongitude))
         let rightAscension = arctan2Deg(
             cosDeg(obliquity) * sinDeg(eclipticLongitude),
-            cosDeg(eclipticLongitude)
+            cosDeg(eclipticLongitude),
         ) / 15.0
         let equationOfTime = meanLongitude / 15.0 - fixHour(rightAscension)
         return (declination, equationOfTime)

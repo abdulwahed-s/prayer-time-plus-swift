@@ -59,7 +59,7 @@ public struct CalculationParameters: Sendable, Equatable {
         adjustments: PrayerAdjustments = PrayerAdjustments(),
         madhab: Madhab = .shafi,
         highLatitudeRule: HighLatitudeRule = .automatic,
-        isRamadan: Bool = false
+        isRamadan: Bool = false,
     ) {
         self.method = method
         self.fajrAngle = fajrAngle
@@ -81,8 +81,12 @@ extension CalculationParameters {
     /// Columns: Fajr angle, Maghrib interval flag, Maghrib value, Isha interval
     /// flag, Isha value, then the Fajr/Sunrise/Dhuhr/Asr/Maghrib/Isha minute offsets.
     init(key: String, columns: [Double]) {
-        func value(_ index: Int) -> Double { index < columns.count ? columns[index] : 0 }
-        func offset(_ index: Int) -> Int { Int(value(index)) }
+        func value(_ index: Int) -> Double {
+            index < columns.count ? columns[index] : 0
+        }
+        func offset(_ index: Int) -> Int {
+            Int(value(index))
+        }
 
         self.init(
             method: key,
@@ -97,8 +101,8 @@ extension CalculationParameters {
                 dhuhr: offset(7),
                 asr: offset(8),
                 maghrib: offset(9),
-                isha: offset(10)
-            )
+                isha: offset(10),
+            ),
         )
     }
 }

@@ -30,11 +30,14 @@ public struct Coordinates: Sendable, Equatable {
         latitude: Double,
         longitude: Double,
         altitude: Double = 0,
-        validate: Bool = false
+        validate: Bool = false,
     ) {
         if validate {
             precondition((-90.0 ... 90.0).contains(latitude), "latitude must be within -90...90")
-            precondition((-180.0 ... 180.0).contains(longitude), "longitude must be within -180...180")
+            precondition(
+                (-180.0 ... 180.0).contains(longitude),
+                "longitude must be within -180...180",
+            )
         }
         self.latitude = latitude
         self.longitude = longitude

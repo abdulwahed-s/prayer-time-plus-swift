@@ -57,9 +57,10 @@ struct PrayerTimeEngine {
         let solar = SolarTime(baseJulianDay: base, latitude: latitude)
 
         let methodKey = parameters.method ?? ""
+        let usesElevation = Self.elevationMethods.contains(methodKey)
+            || Self.elevationCountries.contains(countryCode.uppercased())
         var dip = 0.833
-        if Self.elevationMethods.contains(methodKey)
-            || Self.elevationCountries.contains(countryCode.uppercased()) {
+        if usesElevation {
             // Geometric horizon dip in degrees for an observer above sea level.
             dip += 0.0347 * coordinates.altitude.squareRoot()
         }
@@ -134,7 +135,7 @@ struct PrayerTimeEngine {
             asr: Self.roundedMinute(asr),
             sunset: Self.roundedMinute(sunset),
             maghrib: Self.roundedMinute(maghrib),
-            isha: Self.roundedMinute(isha)
+            isha: Self.roundedMinute(isha),
         )
     }
 
@@ -142,9 +143,9 @@ struct PrayerTimeEngine {
     private var activeHighLatitudeRule: HighLatitudeRule? {
         switch parameters.highLatitudeRule {
         case .middleOfTheNight, .seventhOfTheNight, .twilightAngle:
-            return parameters.highLatitudeRule
+            parameters.highLatitudeRule
         case .automatic, .unadjusted:
-            return nil
+            nil
         }
     }
 
@@ -152,14 +153,14 @@ struct PrayerTimeEngine {
     private static func nightPortion(angle: Double, rule: HighLatitudeRule) -> Double {
         switch rule {
         case .twilightAngle:
-            return angle / 60.0
+            angle / 60.0
         case .middleOfTheNight:
-            return 0.5
+            0.5
         case .seventhOfTheNight:
             // Literal, not 1.0 / 7.0, for numeric parity with the reference.
-            return 0.14286
+            0.14286
         case .automatic, .unadjusted:
-            return 0.0
+            0.0
         }
     }
 

@@ -126,7 +126,9 @@ public enum CalculationMethod: String, Sendable, Equatable, CaseIterable {
     case other
 
     /// The stable string key for this method.
-    public var key: String { rawValue }
+    public var key: String {
+        rawValue
+    }
 
     /// A fresh parameter set for this method.
     ///

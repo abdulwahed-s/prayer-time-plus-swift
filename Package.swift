@@ -3,9 +3,9 @@
 
 import PackageDescription
 
-// Treat every warning as an error so the tree stays warning-clean. This uses the
-// supported build setting (not `-warnings-as-errors` unsafe flags) so the package
-// can still be consumed by a semantic-version requirement.
+/// Treat every warning as an error so the tree stays warning-clean. This uses the
+/// supported build setting (not `-warnings-as-errors` unsafe flags) so the package
+/// can still be consumed by a semantic-version requirement.
 let strict: [SwiftSetting] = [
     .treatAllWarnings(as: .error),
 ]
@@ -21,28 +21,28 @@ let package = Package(
     products: [
         .library(
             name: "PrayerTimePlus",
-            targets: ["PrayerTimePlus"]
+            targets: ["PrayerTimePlus"],
         ),
         .executable(
             name: "prayer-time-plus-cli",
-            targets: ["prayer-time-plus-cli"]
+            targets: ["prayer-time-plus-cli"],
         ),
     ],
     targets: [
         .target(
             name: "PrayerTimePlus",
-            swiftSettings: strict
+            swiftSettings: strict,
         ),
         .executableTarget(
             name: "prayer-time-plus-cli",
             dependencies: ["PrayerTimePlus"],
-            swiftSettings: strict
+            swiftSettings: strict,
         ),
         .testTarget(
             name: "PrayerTimePlusTests",
             dependencies: ["PrayerTimePlus"],
-            swiftSettings: strict
+            swiftSettings: strict,
         ),
     ],
-    swiftLanguageModes: [.v6]
+    swiftLanguageModes: [.v6],
 )

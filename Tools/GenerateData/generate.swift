@@ -91,6 +91,7 @@ for key in methods.keys.sorted() {
     let rendered = numbers(methods[key] ?? []).map(literal).joined(separator: ", ")
     methodLines.append("        \"\(key)\": [\(rendered)],")
 }
+
 methodLines.append("    ]")
 methodLines.append("}")
 methodLines.append("")

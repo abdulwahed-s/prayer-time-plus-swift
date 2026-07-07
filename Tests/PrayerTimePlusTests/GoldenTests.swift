@@ -1,5 +1,5 @@
-import XCTest
 @testable import PrayerTimePlus
+import XCTest
 
 /// The verified Appendix-A golden vectors for Sohar, Oman on 2026-06-28 (+4).
 ///
@@ -26,7 +26,7 @@ final class GoldenTests: XCTestCase {
             calculationParameters: CalculationMethod.muslimWorldLeague.parameters,
             utcOffset: utcOffset,
             countryCode: "OM",
-            cityName: "sohar"
+            cityName: "sohar",
         )
         XCTAssertEqual(clock(times.fajr), "03:59")
         XCTAssertEqual(clock(times.sunrise), "05:27")
@@ -44,7 +44,7 @@ final class GoldenTests: XCTestCase {
             calculationParameters: CalculationMethod.oman.parameters,
             utcOffset: utcOffset,
             countryCode: "OM",
-            cityName: "sohar"
+            cityName: "sohar",
         )
         XCTAssertEqual(clock(times.fajr), "03:59")
         XCTAssertEqual(clock(times.sunrise), "05:27")
