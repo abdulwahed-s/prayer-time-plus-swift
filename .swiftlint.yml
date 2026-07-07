@@ -7,6 +7,10 @@ excluded:
   # GENERATED data — reviewed through its generator (Tools/), not hand-linted.
   - Sources/PrayerTimePlus/Data
 
+disabled_rules:
+  # SwiftFormat owns trailing-comma style (it adds them in multiline collections).
+  - trailing_comma
+
 opt_in_rules:
   - closure_spacing
   - collection_alignment
@@ -43,6 +47,10 @@ identifier_name:
 
 type_name:
   max_length: 50
+
+large_tuple:
+  warning: 3
+  error: 4
 
 function_body_length:
   warning: 90

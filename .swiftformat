@@ -4,4 +4,6 @@
 --indent 4
 --self remove
 --stripunusedargs closure-only
+# Keep numeric literals exactly as written (the astronomy constants are verbatim).
+--disable numberFormatting
 --exclude .build,Sources/PrayerTimePlus/Data
