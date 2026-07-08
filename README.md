@@ -1,8 +1,17 @@
 # PrayerTimePlus
 
+[![Swift Package Index](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fabdulwahed-s%2Fprayer-time-plus-swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift)
+[![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fabdulwahed-s%2Fprayer-time-plus-swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A native, dependency-free Swift package for computing Islamic prayer times. It
 pairs Adhan-style ergonomics with a specific reference engine's angles, per-prayer
 offsets and country-based "Auto" resolution — matching that engine to the minute.
+
+> **Also available for [Dart / Flutter](https://github.com/abdulwahed-s/prayer_time_plus)
+> and [Kotlin / JVM](https://github.com/abdulwahed-s/prayer-time-plus-kotlin).** All three
+> are faithful ports of the same solar engine and compute identical times to the minute.
+> See [Other platforms](#other-platforms).
 
 - **Zero third-party dependencies** — Swift standard library and Foundation only.
 - **Deterministic** — the timezone enters as a caller-supplied offset; there is
@@ -21,7 +30,7 @@ Add the package to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/abdulwahed/prayer-time-plus-swift.git", from: "0.1.0"),
+    .package(url: "https://github.com/abdulwahed-s/prayer-time-plus-swift.git", from: "0.1.0"),
 ]
 ```
 
@@ -176,6 +185,21 @@ Every public symbol carries a DocC comment. Build the documentation in Xcode wit
 **Product ▸ Build Documentation**, or add
 [swift-docc-plugin](https://github.com/apple/swift-docc-plugin) to generate it
 from the command line.
+
+## Other platforms
+
+The same solar engine, ported idiomatically to three ecosystems — identical
+results to the minute:
+
+| Platform | Package | Repository |
+|---|---|---|
+| **Swift** · iOS, macOS, watchOS, tvOS, Linux — you are here | [Swift Package Index](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift) | [prayer-time-plus-swift](https://github.com/abdulwahed-s/prayer-time-plus-swift) |
+| Dart / Flutter | [`prayer_time_plus`](https://pub.dev/packages/prayer_time_plus) | [prayer_time_plus](https://github.com/abdulwahed-s/prayer_time_plus) |
+| Kotlin / JVM | [`io.github.abdulwahed-s:prayer-time-plus`](https://central.sonatype.com/artifact/io.github.abdulwahed-s/prayer-time-plus) | [prayer-time-plus-kotlin](https://github.com/abdulwahed-s/prayer-time-plus-kotlin) |
+
+The Swift-version and platform badges above are served by the
+[Swift Package Index](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift)
+and stay current automatically once the package is indexed.
 
 ## License
 
