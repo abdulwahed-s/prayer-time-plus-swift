@@ -16,11 +16,14 @@ public struct CalculationParameters: Sendable, Equatable {
     /// Fajr twilight depression angle, in degrees.
     public var fajrAngle: Double
 
-    /// When `true`, Maghrib is Sunset plus ``maghribValue`` minutes; when `false`,
-    /// Maghrib is Sunset (plus any offset).
+    /// When `true`, ``maghribValue`` is minutes after Sunset. When `false`, a
+    /// positive value is an evening solar-depression angle and a non-positive
+    /// value keeps Maghrib at Sunset.
     public var maghribIsInterval: Bool
 
-    /// Minutes after Sunset for Maghrib when ``maghribIsInterval`` is `true`.
+    /// Minutes after Sunset in interval mode, or the evening solar-depression
+    /// angle in degrees in non-interval mode. Unavailable or non-chronological
+    /// angles safely fall back to Sunset; a non-positive angle means Sunset.
     public var maghribValue: Double
 
     /// When `true`, Isha is Maghrib plus ``ishaValue`` minutes; when `false`, Isha

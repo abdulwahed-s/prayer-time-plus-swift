@@ -42,4 +42,21 @@ final class HighLatitudeTests: XCTestCase {
         XCTAssertNotNil(result.fajr)
         XCTAssertNotNil(result.isha)
     }
+
+    func testUKAutoMethodWithAutomaticHighLatitudeResolvesLondonSummer() {
+        var params = AutoMethod.forCountry("GB").parameters
+        params.highLatitudeRule = .automatic
+
+        let result = PrayerTimes(
+            coordinates: Coordinates(latitude: 51.5080, longitude: -0.1281),
+            date: DateComponents(year: 2026, month: 7, day: 9),
+            calculationParameters: params,
+            utcOffset: 3600,
+            countryCode: "GB",
+            cityName: "London",
+        )
+
+        XCTAssertNotNil(result.fajr)
+        XCTAssertNotNil(result.isha)
+    }
 }

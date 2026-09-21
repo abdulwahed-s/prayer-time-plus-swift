@@ -1,8 +1,8 @@
 /// A named preset of calculation parameters.
 ///
 /// Each case maps to a stable string ``key`` and yields a fresh
-/// ``CalculationParameters`` value via ``parameters``. Use ``other`` to build a
-/// fully custom method.
+/// ``CalculationParameters`` value via ``parameters``. Use ``other`` (stable key
+/// `custom`) to build a fully custom method.
 ///
 /// ```swift
 /// let params = CalculationMethod.muslimWorldLeague.parameters
@@ -121,31 +121,34 @@ public enum CalculationMethod: String, Sendable, Equatable, CaseIterable {
     /// Eindhoven.
     case eindhoven
 
-    /// A fully custom method: ``parameters`` returns a neutral set for the caller
-    /// to configure.
+    /// A fully custom method starting at Fajr 18°, Maghrib at Sunset, and Isha
+    /// 17°. Its stable key is `custom`.
     case other
 
     /// The stable string key for this method.
     public var key: String {
-        rawValue
+        self == .other ? "custom" : rawValue
     }
 
     /// A fresh parameter set for this method.
     ///
-    /// ``other`` returns a neutral set; ``dubai`` (which has no dedicated row) uses
-    /// the Muslim World League base angles.
+    /// ``other`` returns the shared Custom defaults; ``dubai`` (which has no
+    /// dedicated row) uses the Muslim World League base angles.
     public var parameters: CalculationParameters {
-        if self == .other {
-            return CalculationParameters(method: rawValue)
-        }
-        let columns = GeneratedMethodData.parameters[rawValue]
+        let columns = GeneratedMethodData.parameters[key]
             ?? GeneratedMethodData.parameters["mwl"]
             ?? [18, 1, 0, 0, 17, 0, 0, 0, 0, 0, 0]
-        return CalculationParameters(key: rawValue, columns: columns)
+        return CalculationParameters(key: key, columns: columns)
     }
 
     /// The method for a string key, or `nil` if none matches.
+    ///
+    /// `other` remains accepted as a compatibility alias for the stable
+    /// `custom` key.
     public static func from(key: String) -> CalculationMethod? {
-        CalculationMethod(rawValue: key)
+        if key == "custom" || key == "other" {
+            return .other
+        }
+        return CalculationMethod(rawValue: key)
     }
 }

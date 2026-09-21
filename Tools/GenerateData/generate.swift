@@ -82,7 +82,8 @@ var methodLines: [String] = [
     "",
     "/// Method key to its 11-column parameter array, copied verbatim from the",
     "/// reference method table. Columns: Fajr angle, Maghrib interval flag, Maghrib",
-    "/// value, Isha interval flag, Isha value, then the Fajr/Sunrise/Dhuhr/Asr/",
+    "/// value (minutes in interval mode, otherwise an evening angle where non-positive",
+    "/// means Sunset), Isha interval flag, Isha value, then Fajr/Sunrise/Dhuhr/Asr/",
     "/// Maghrib/Isha minute offsets.",
     "enum GeneratedMethodData {",
     "    static let parameters: [String: [Double]] = [",
@@ -102,7 +103,6 @@ write(methodLines.joined(separator: "\n"), to: "GeneratedMethodData.swift")
 let autoJSON = loadObject("auto_method_resolution.json")
 let mwlDefault = (autoJSON["mwl_default"] as? String) ?? "mwl"
 let country = stringMap(autoJSON["country"])
-let continent = stringMap(autoJSON["continent"])
 
 func renderMap(_ name: String, _ map: [String: String]) -> [String] {
     var lines = ["    static let \(name): [String: String] = ["]
@@ -117,16 +117,14 @@ var autoLines: [String] = [
     "// GENERATED — do not edit by hand.",
     "// Regenerate with: swift Tools/GenerateData/generate.swift",
     "",
-    "/// Country/continent code to method key, for Auto resolution.",
+    "/// Country code to method key, for Auto resolution.",
     "enum GeneratedAutoData {",
     "    static let mwlDefault = \"\(mwlDefault)\"",
     "",
 ]
 autoLines += renderMap("country", country)
-autoLines.append("")
-autoLines += renderMap("continent", continent)
 autoLines.append("}")
 autoLines.append("")
 write(autoLines.joined(separator: "\n"), to: "GeneratedAutoData.swift")
 
-print("done: \(methods.count) methods, \(country.count) countries, \(continent.count) continents")
+print("done: \(methods.count) methods, \(country.count) countries")

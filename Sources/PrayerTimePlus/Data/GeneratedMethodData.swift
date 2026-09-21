@@ -3,7 +3,8 @@
 
 /// Method key to its 11-column parameter array, copied verbatim from the
 /// reference method table. Columns: Fajr angle, Maghrib interval flag, Maghrib
-/// value, Isha interval flag, Isha value, then the Fajr/Sunrise/Dhuhr/Asr/
+/// value (minutes in interval mode, otherwise an evening angle where non-positive
+/// means Sunset), Isha interval flag, Isha value, then Fajr/Sunrise/Dhuhr/Asr/
 /// Maghrib/Isha minute offsets.
 enum GeneratedMethodData {
     static let parameters: [String: [Double]] = [
@@ -15,6 +16,7 @@ enum GeneratedMethodData {
         "birmingham": [18.0, 1.0, 0.0, 0.0, 17.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "blackburn": [18.0, 1.0, 0.0, 0.0, 17.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "calgary": [15.0, 1.0, 0.0, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        "custom": [18.0, 1.0, 0.0, 0.0, 17.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "czech": [12.04, 0.0, 0.0, 0.0, 12.04, 0.0, 0.0, 5.0, 0.0, -2.0, 0.0],
         "dordrecht": [15.0, 1.0, 0.0, 0.0, 15.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "egypt": [19.5, 1.0, 0.0, 0.0, 17.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],

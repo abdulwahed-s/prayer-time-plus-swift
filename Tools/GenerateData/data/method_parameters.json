@@ -1,7 +1,8 @@
 {
-  "_doc": "Method key -> 11-column parameter array. Columns: [0] Fajr angle, [1] Maghrib interval flag, [2] Maghrib value, [3] Isha interval flag, [4] Isha value, [5] Fajr offset min, [6] Sunrise offset min, [7] Dhuhr offset min, [8] Asr offset min, [9] Maghrib offset min, [10] Isha offset min. Source of truth for Tools/GenerateData/generate.swift.",
+  "_doc": "Method key -> 11-column parameter array. Columns: [0] Fajr angle, [1] Maghrib interval flag, [2] Maghrib value (minutes when the flag is 1; otherwise evening depression angle, with non-positive meaning sunset), [3] Isha interval flag, [4] Isha value, [5] Fajr offset min, [6] Sunrise offset min, [7] Dhuhr offset min, [8] Asr offset min, [9] Maghrib offset min, [10] Isha offset min. Source of truth for Tools/GenerateData/generate.swift.",
   "columns": ["fajrAngle", "maghribInterval", "maghribValue", "ishaInterval", "ishaValue", "fajrOffset", "sunriseOffset", "dhuhrOffset", "asrOffset", "maghribOffset", "ishaOffset"],
   "methods": {
+    "custom":      [18.0,  1, 0.0,   0, 17.0,   0,  0, 0, 0, 0, 0],
     "mwl":         [18.0,  1, 0.0,   0, 17.0,   0,  0, 0, 0, 0, 0],
     "morocco":     [19.09, 0, 0.0,   0, 17.0,   0, -2, 5, 0, 3, 0],
     "azrou":       [19.1,  0, 0.0,   0, 17.0,   0, -1, 5, 0, 1, 0],

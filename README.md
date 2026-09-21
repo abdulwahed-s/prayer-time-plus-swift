@@ -107,7 +107,7 @@ let params = CalculationMethod.muslimWorldLeague.parameters
 
 See [Documentation/CalculationMethods.md](Documentation/CalculationMethods.md)
 for the full table, or enumerate `CalculationMethod.allCases`. Build a fully
-custom method with `.other`.
+custom method with `.other`, whose stable key is `custom`.
 
 ## Madhab
 
@@ -158,6 +158,24 @@ params.highLatitudeRule = .seventhOfTheNight
 params.adjustments.fajr = 2        // add 2 minutes to Fajr
 params.isRamadan = true            // Umm al-Qura +30 Isha (in SA)
 ```
+
+To configure custom Fajr, Maghrib, and Isha angles:
+
+```swift
+var params = CalculationMethod.other.parameters
+params.fajrAngle = 18
+params.maghribIsInterval = false
+params.maghribValue = 4       // evening depression angle
+params.ishaIsInterval = false
+params.ishaValue = 17
+```
+
+With `maghribIsInterval == false`, a positive `maghribValue` is the evening
+solar-depression angle; zero or a negative value keeps Maghrib at Sunset. An
+unavailable or non-chronological angle safely falls back to Sunset. With the
+flag set to `true`, the value remains minutes after Sunset. Interval Isha is
+always measured from the final Maghrib, including an angle-based one. The
+Custom defaults are Fajr 18°, Maghrib at Sunset, and Isha 17°.
 
 The current and next prayer are available directly:
 

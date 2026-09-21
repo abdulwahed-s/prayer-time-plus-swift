@@ -46,10 +46,14 @@ final class CalculationMethodTests: XCTestCase {
         XCTAssertEqual(dubai.method, "dubai")
     }
 
-    func testOtherIsNeutral() {
+    func testOtherUsesSharedCustomDefaults() {
         let params = CalculationMethod.other.parameters
-        XCTAssertEqual(params.fajrAngle, 0)
-        XCTAssertEqual(params.ishaValue, 0)
+        XCTAssertEqual(CalculationMethod.other.key, "custom")
+        XCTAssertEqual(params.method, "custom")
+        XCTAssertEqual(params.fajrAngle, 18)
+        XCTAssertEqual(params.maghribValue, 0)
+        XCTAssertEqual(params.ishaValue, 17)
+        XCTAssertEqual(CalculationMethod.from(key: "other"), .other)
     }
 
     func testEveryMethodResolvesFromItsKey() {
@@ -80,6 +84,51 @@ final class CalculationMethodTests: XCTestCase {
         ]
         for (code, method) in expected {
             XCTAssertEqual(AutoMethod.forCountry(code), method, "for \(code)")
+        }
+    }
+
+    func testAutoResolutionUsesCorrectedIraqAndAustriaDefaults() {
+        XCTAssertEqual(AutoMethod.forCountry("IQ"), .iraq)
+        XCTAssertEqual(AutoMethod.forCountry("AT"), .austria)
+    }
+
+    func testAutoResolutionCoversEveryDedicatedNationalMethod() {
+        // Every supported country-wide preset. Global/regional defaults and city-only
+        // variants are intentionally excluded.
+        let expected: [String: CalculationMethod] = [
+            "AE": .emirates,
+            "AT": .austria,
+            "BE": .belgium,
+            "CH": .switzerland,
+            "CZ": .czech,
+            "DZ": .algeria,
+            "EG": .egyptian,
+            "FR": .uoif,
+            "ID": .indonesia,
+            "IQ": .iraq,
+            "JO": .jordan,
+            "KR": .southKorea,
+            "KW": .kuwait,
+            "KZ": .kazakhstan,
+            "LU": .luxembourg,
+            "LY": .libya,
+            "MA": .morocco,
+            "MV": .maldives,
+            "MY": .malaysia2,
+            "OM": .oman,
+            "PK": .karachi,
+            "PS": .palestine,
+            "QA": .qatar,
+            "SA": .ummAlQura,
+            "SD": .sudan,
+            "SY": .syria,
+            "TJ": .tajikistan,
+            "TN": .tunisia,
+            "TR": .turkey,
+        ]
+
+        for (countryCode, method) in expected {
+            XCTAssertEqual(AutoMethod.forCountry(countryCode), method, "for \(countryCode)")
         }
     }
 

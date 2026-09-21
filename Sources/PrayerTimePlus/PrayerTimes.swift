@@ -31,9 +31,9 @@ public struct PrayerTimes: Sendable {
     public let dhuhr: Date?
     /// Afternoon prayer.
     public let asr: Date?
-    /// Sunset, from which Maghrib is derived.
+    /// Sunset, used by the default and interval Maghrib modes.
     public let sunset: Date?
-    /// Sunset prayer.
+    /// Sunset prayer, optionally calculated from an evening depression angle.
     public let maghrib: Date?
     /// Night prayer.
     public let isha: Date?

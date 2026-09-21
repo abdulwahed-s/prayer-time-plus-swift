@@ -5,8 +5,11 @@ from ``CalculationMethod/parameters``. The table below decodes the most commonly
 used methods; the full set is available through `CalculationMethod.allCases`, and
 any method can be resolved from its string key with `CalculationMethod.from(key:)`.
 
-`Maghrib` is always derived from sunset. `Isha` is either a twilight angle or an
-interval measured from Maghrib. Minute offsets are applied on top.
+`Maghrib` is Sunset by default. Its value is minutes after Sunset in interval
+mode, or an evening solar-depression angle in non-interval mode; a non-positive
+angle means Sunset, and unavailable or non-chronological angles fall back to
+Sunset. `Isha` is either a twilight angle or an interval measured from the final
+Maghrib. Minute offsets are applied exactly once on top.
 
 ## Standard methods
 
@@ -68,4 +71,5 @@ Additional city-scoped presets are available (for example `london`, `birmingham`
 `aachen`, `munchen`, `potsdam`, `nurnberg`, `paris`, `toulouse`, `lyon`,
 `orleans`, `windsor`, `calgary`, `mississauga`, `luxembourg`, `austria`,
 `tajikistan`, `omanMuscat`, `azrou`, `fribourg`, `southKorea`, `rotterdam`,
-`dordrecht`, `eindhoven`) using the same angle-based computation.
+`dordrecht`, `eindhoven`) using the same angle-based computation. `.other` uses
+the stable key `custom` and starts at Fajr 18°, Maghrib at Sunset, and Isha 17°.
