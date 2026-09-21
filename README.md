@@ -30,7 +30,7 @@ Add the package to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/abdulwahed-s/prayer-time-plus-swift.git", from: "0.1.0"),
+    .package(url: "https://github.com/abdulwahed-s/prayer-time-plus-swift.git", from: "0.3.0"),
 ]
 ```
 
