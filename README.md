@@ -8,9 +8,11 @@ A native, dependency-free Swift package for computing Islamic prayer times. It
 pairs Adhan-style ergonomics with a specific reference engine's angles, per-prayer
 offsets and country-based "Auto" resolution — matching that engine to the minute.
 
-> **Also available for [Dart / Flutter](https://github.com/abdulwahed-s/prayer_time_plus)
-> and [Kotlin / JVM](https://github.com/abdulwahed-s/prayer-time-plus-kotlin).** All three
-> are faithful ports of the same solar engine and compute identical times to the minute.
+> **Also available for [Dart / Flutter](https://github.com/abdulwahed-s/prayer_time_plus),
+> [Kotlin / JVM](https://github.com/abdulwahed-s/prayer-time-plus-kotlin), and
+> [C# / .NET](https://github.com/abdulwahed-s/prayer-time-plus-csharp).** All four
+> are faithful ports of the same solar engine and match supported prayer-time
+> calculations to the minute for identical inputs.
 > See [Other platforms](#other-platforms).
 
 - **Zero third-party dependencies** — Swift standard library and Foundation only.
@@ -206,14 +208,15 @@ from the command line.
 
 ## Other platforms
 
-The same solar engine, ported idiomatically to three ecosystems — identical
-results to the minute:
+The same solar engine, ported idiomatically to four ecosystems, with matching
+supported prayer-time calculations to the minute:
 
 | Platform | Package | Repository |
 |---|---|---|
 | **Swift** · iOS, macOS, watchOS, tvOS, Linux — you are here | [Swift Package Index](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift) | [prayer-time-plus-swift](https://github.com/abdulwahed-s/prayer-time-plus-swift) |
 | Dart / Flutter | [`prayer_time_plus`](https://pub.dev/packages/prayer_time_plus) | [prayer_time_plus](https://github.com/abdulwahed-s/prayer_time_plus) |
 | Kotlin / JVM | [`io.github.abdulwahed-s:prayer-time-plus`](https://central.sonatype.com/artifact/io.github.abdulwahed-s/prayer-time-plus) | [prayer-time-plus-kotlin](https://github.com/abdulwahed-s/prayer-time-plus-kotlin) |
+| C# / .NET | [`PrayerTimePlus`](https://www.nuget.org/packages/PrayerTimePlus) | [prayer-time-plus-csharp](https://github.com/abdulwahed-s/prayer-time-plus-csharp) |
 
 The Swift-version and platform badges above are served by the
 [Swift Package Index](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift)
